@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CPC Club | Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://codeforces.org/s/0/favicon-32x32.png" />
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://codeforces.org/s/0/favicon-32x32.png" class="h-8 w-8" alt="Club Logo" />
+        <span class="font-bold text-xl text-blue-700 dark:text-blue-400">CPC Club</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">Home</a>
+        <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
+        <a href="leaderboard.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Leaderboard</a>
+        <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
+      </div>
+      <div class="flex items-center">
+        <button id="darkModeToggle" class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+          <svg id="moonIcon" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Hero Section -->
+    <section class="flex flex-col md:flex-row items-center justify-between mb-12">
+      <div class="flex-1 mb-8 md:mb-0 md:mr-8">
+        <h1 class="text-3xl font-extrabold mb-4 text-blue-700 dark:text-blue-400">Welcome to the CPC Club of IUBAT</h1>
+        <p class="text-lg mb-6 text-gray-700 dark:text-gray-300">
+          The Competitive Programming Club at IUBAT is a vibrant community of problem solvers, coders, and future champions.<br>
+          <span class="font-semibold text-blue-600 dark:text-blue-300">Join us to improve your skills, compete in contests, and learn together!</span>
+        </p>
+        <div class="flex space-x-3">
+          <a href="members.html" class="px-5 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition font-semibold shadow">Meet Members</a>
+          <a href="leaderboard.html" class="px-5 py-3 bg-purple-600 text-white rounded hover:bg-purple-700 transition font-semibold shadow">Leaderboard</a>
+          <a href="resources.html" class="px-5 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition font-semibold shadow">Resources</a>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/analysis-2029983_1280.png" alt="Programming Illustration" class="w-80 rounded-lg shadow-lg" />
+      </div>
+    </section>
+
+    <!-- Club Stats Dashboard -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Club Dashboard</h2>
+      <div id="dashboardStats" class="grid grid-cols-2 md:grid-cols-5 gap-6"></div>
+    </section>
+
+    <!-- Club Highlights -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Why Join Us?</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center hover:scale-105 transition">
+          <svg class="h-12 w-12 text-blue-500 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 20l9-5-9-5-9 5 9 5z" />
+            <path d="M12 12V4" />
+          </svg>
+          <span class="font-bold text-lg mb-1">Skill Growth</span>
+          <span class="text-gray-600 dark:text-gray-300 text-center">Sharpen your problem-solving and coding skills with regular practice and contests.</span>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center hover:scale-105 transition">
+          <svg class="h-12 w-12 text-green-500 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M8 12l2 2 4-4" />
+          </svg>
+          <span class="font-bold text-lg mb-1">Team Spirit</span>
+          <span class="text-gray-600 dark:text-gray-300 text-center">Collaborate, learn, and grow together with a supportive community.</span>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center hover:scale-105 transition">
+          <svg class="h-12 w-12 text-orange-500 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M13 16h-1v-4h-1m1-4h.01" />
+            <circle cx="12" cy="12" r="10" />
+          </svg>
+          <span class="font-bold text-lg mb-1">Opportunities</span>
+          <span class="text-gray-600 dark:text-gray-300 text-center">Participate in national and international contests and workshops.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motivation -->
+    <section>
+      <h2 class="text-2xl font-bold mb-6">Daily Motivation</h2>
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex items-center space-x-4">
+        <img src="https://i.imgur.com/8Km9tLL.png" alt="Meme" class="h-16 w-16 rounded-full border-2 border-blue-400" />
+        <div>
+          <p class="text-lg italic text-gray-700 dark:text-gray-300">
+            "The only way to learn a new programming language is by writing programs in it." <span class="font-semibold">– Dennis Ritchie</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Load members data as a global variable -->
+  <script src="members.js"></script>
+  <script>
+    // Dark mode toggle
+    document.getElementById('darkModeToggle').onclick = () => {
+      document.documentElement.classList.toggle('dark');
+      // Save to local storage
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    };
+    // Load dark mode preference from local storage
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Dashboard stats
+    function renderDashboardStats() {
+      if (!window.clubMembers) return;
+      const members = window.clubMembers;
+      const total = members.length;
+      const level0 = members.filter(m => m.level === "Level-0").length;
+      const level1 = members.filter(m => m.level === "Level-1").length;
+      const level2 = members.filter(m => m.level === "Level-2").length;
+      const advanced = members.filter(m => m.level === "Advanced").length;
+
+      const stats = [
+        {
+          label: "Total Members",
+          value: total,
+          color: "text-blue-600 dark:text-blue-400",
+          icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a4 4 0 00-3-3.87"/><path d="M9 20H4v-2a4 4 0 013-3.87"/><circle cx="9" cy="7" r="4"/><circle cx="17" cy="7" r="4"/></svg>`
+        },
+        {
+          label: "Level-0",
+          value: level0,
+          color: "text-green-600",
+          icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>`
+        },
+        {
+          label: "Level-1",
+          value: level1,
+          color: "text-yellow-600",
+          icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`
+        },
+        {
+          label: "Level-2",
+          value: level2,
+          color: "text-orange-600",
+          icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4l-3-3"/></svg>`
+        },
+        {
+          label: "Advanced",
+          value: advanced,
+          color: "text-red-600",
+          icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`
+        }
+      ];
+
+      document.getElementById("dashboardStats").innerHTML = stats.map(stat => `
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col items-center hover:scale-105 transition">
+          <div class="${stat.color} mb-2">${stat.icon}</div>
+          <span class="text-3xl font-bold ${stat.color}">${stat.value}</span>
+          <span class="mt-2 text-gray-600 dark:text-gray-300 font-semibold">${stat.label}</span>
+        </div>
+      `).join('');
+    }
+
+    // Render stats on load
+    if (window.clubMembers) renderDashboardStats();
+    else {
+      window.addEventListener('DOMContentLoaded', renderDashboardStats);
+    }
+  </script>
+</body>
+</html>

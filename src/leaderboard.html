@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CPC Club | Leaderboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://codeforces.org/s/0/favicon-32x32.png">
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Navbar (same as other pages) -->
+  <nav class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://codeforces.org/s/0/favicon-32x32.png" class="h-8 w-8" alt="Club Logo">
+        <span class="font-bold text-xl text-blue-700 dark:text-blue-400">CPC Club</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Home</a>
+        <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
+        <a href="leaderboard.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">Leaderboard</a>
+        <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
+      </div>
+      <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+        <svg id="moonIcon" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold mb-8 text-blue-700 dark:text-blue-300 text-center">Club Leaderboards</h2>
+    <div class="flex flex-col md:flex-row md:items-end gap-4 mb-8">
+      <div>
+        <label for="lbType" class="font-semibold block mb-1">Leaderboard Type:</label>
+        <select id="lbType" class="px-3 py-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-gray-100 w-full">
+          <option value="rating">By Rating</option>
+          <option value="solved">By Problems Solved</option>
+          <option value="rating-gain">Rating Gain (Date Range)</option>
+          <option value="solved-range">Solved (Date Range)</option>
+        </select>
+      </div>
+      <!-- Add this Club Level filter select beside your leaderboard type select -->
+      <div>
+        <label for="clubLevel" class="font-semibold block mb-1">Club Level:</label>
+        <select id="clubLevel" class="px-3 py-2 rounded border border-gray-300 dark:bg-gray-800 dark:text-gray-100 w-full">
+          <option value="all">All</option>
+          <option value="Level-0">Level-0</option>
+          <option value="Level-1">Level-1</option>
+          <option value="Level-2">Level-2</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+      <div id="dateInputs" class="flex gap-2 items-end hidden">
+        <div>
+          <label class="block mb-1">From:</label>
+          <input type="date" id="fromDate" class="px-2 py-1 rounded border border-gray-300 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+        </div>
+        <div>
+          <label class="block mb-1">To:</label>
+          <input type="date" id="toDate" class="px-2 py-1 rounded border border-gray-300 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+        </div>
+      </div>
+      <button id="generateBtn" class="h-10 px-6 bg-blue-600 text-white rounded hover:bg-blue-700 transition self-end">Generate</button>
+    </div>
+    <div class="flex flex-col items-center">
+      <div id="loadingSpinner" class="hidden my-8">
+        <svg class="animate-spin h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        </svg>
+        <div class="mt-2 text-blue-600 font-semibold">Loading...</div>
+      </div>
+      <div id="leaderboardCards" class="flex flex-col gap-4 w-full"></div>
+    </div>
+  </main>
+
+  <script src="members.js"></script>
+  <script>
+    // Dark mode toggle
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.onclick = () => {
+      document.documentElement.classList.toggle('dark');
+    };
+
+    // --- Leaderboard Logic ---
+    async function showLeaderboard(type, from, to) {
+      document.getElementById('leaderboardCards').innerHTML = "Loading...";
+      const members = getFilteredMembers();
+      // Always fetch user infos for avatars and names
+      const infos = await fetchAllUserInfos(members);
+      // Map handle to avatar and rank info
+      const infoMap = {};
+      infos.forEach(u => { infoMap[u.handle.toLowerCase()] = u; });
+
+      if (type === "rating") {
+        const users = members.map(m => {
+          const info = infoMap[m.handle.toLowerCase()];
+          return {
+            name: m.name,
+            handle: m.handle,
+            avatar: info?.avatar,
+            level: m.level,
+            rating: info?.rating ?? 0,
+            solved: "-",
+            gain: undefined
+          };
+        }).sort((a, b) => b.rating - a.rating);
+        renderLeaderboardCards(users, "By Rating");
+      } else if (type === "solved") {
+        const statuses = await fetchAllUserStatuses(members);
+        const users = members.map(m => {
+          const info = infoMap[m.handle.toLowerCase()];
+          const solved = new Set();
+          (statuses[m.handle] || []).forEach(sub => {
+            if (sub.verdict === "OK" && sub.problem) {
+              solved.add(`${sub.problem.contestId}-${sub.problem.index}`);
+            }
+          });
+          return {
+            name: m.name,
+            handle: m.handle,
+            avatar: info?.avatar,
+            level: m.level,
+            rating: info?.rating ?? "-",
+            solved: solved.size,
+            gain: undefined
+          };
+        }).sort((a, b) => b.solved - a.solved);
+        renderLeaderboardCards(users, "By Problems Solved");
+      } else if (type === "rating-gain") {
+        const ratings = await fetchAllUserRatings(members);
+        const fromTs = new Date(from).getTime() / 1000;
+        const toTs = new Date(to).getTime() / 1000;
+        const users = members.map(m => {
+          const info = infoMap[m.handle.toLowerCase()];
+          const rs = ratings[m.handle] || [];
+          let start = rs.find(r => r.ratingUpdateTimeSeconds >= fromTs);
+          let end = [...rs].reverse().find(r => r.ratingUpdateTimeSeconds <= toTs);
+          let gain = (end?.newRating ?? 0) - (start?.oldRating ?? 0);
+          if (!start || !end) gain = 0;
+          return {
+            name: m.name,
+            handle: m.handle,
+            avatar: info?.avatar,
+            level: m.level,
+            rating: info?.rating ?? "-",
+            solved: "-",
+            gain
+          };
+        }).sort((a, b) => b.gain - a.gain);
+        renderLeaderboardCards(users, `Rating Gain (${from} to ${to})`);
+      } else if (type === "solved-range") {
+        const statuses = await fetchAllUserStatuses(members);
+        const fromTs = new Date(from).getTime() / 1000;
+        const toTs = new Date(to).getTime() / 1000;
+        const users = members.map(m => {
+          const info = infoMap[m.handle.toLowerCase()];
+          const solved = new Set();
+          (statuses[m.handle] || []).forEach(sub => {
+            if (
+              sub.verdict === "OK" &&
+              sub.problem &&
+              sub.creationTimeSeconds >= fromTs &&
+              sub.creationTimeSeconds <= toTs
+            ) {
+              solved.add(`${sub.problem.contestId}-${sub.problem.index}`);
+            }
+          });
+          return {
+            name: m.name,
+            handle: m.handle,
+            avatar: info?.avatar,
+            level: m.level,
+            rating: info?.rating ?? "-",
+            solved: solved.size,
+            gain: undefined
+          };
+        }).sort((a, b) => b.solved - a.solved);
+        renderLeaderboardCards(users, `Solved Problems (${from} to ${to})`);
+      }
+    }
+
+    function renderLeaderboardCards(users, typeLabel) {
+      let html = `<div class="mb-4 text-lg font-semibold text-blue-700 dark:text-blue-300">${typeLabel}</div>`;
+      html += users.map((u, i) => `
+        <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow p-4 gap-4">
+          <div class="flex-shrink-0">
+            <div class="h-14 w-14 rounded-full border-4 border-blue-400 overflow-hidden">
+              <img src="${u.avatar || 'https://userpic.codeforces.org/no-avatar.jpg'}" class="h-14 w-14 object-cover" alt="Avatar">
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-lg">${i + 1}.</span>
+              <span class="font-bold text-lg">${u.name || u.handle}</span>
+              <span class="ml-2 px-2 py-0.5 rounded-full text-xs font-semibold
+                ${u.level === 'Level-0' ? 'bg-green-100 text-green-700' : ''}
+                ${u.level === 'Level-1' ? 'bg-yellow-100 text-yellow-700' : ''}
+                ${u.level === 'Level-2' ? 'bg-orange-100 text-orange-700' : ''}
+                ${u.level === 'Advanced' ? 'bg-red-100 text-red-700' : ''}
+                ${!u.level || u.level === 'all' ? 'bg-gray-100 text-gray-700' : ''}">
+                ${u.level || 'N/A'}
+              </span>
+            </div>
+            <div class="flex items-center gap-4 mt-1 text-sm">
+              <a href="https://codeforces.com/profile/${u.handle}" target="_blank" class="text-blue-600 hover:underline font-semibold">@${u.handle}</a>
+              <span class="text-blue-700 font-semibold">Rating: ${u.rating ?? '-'}</span>
+              <span class="text-green-700 font-semibold">Solved: ${u.solved ?? '-'}</span>
+              ${u.gain !== undefined ? `<span class="text-orange-600 font-semibold">Gain: ${u.gain}</span>` : ""}
+            </div>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('leaderboardCards').innerHTML = html;
+    }
+
+    async function fetchAllUserInfos(members) {
+      const handles = members.map(m => m.handle).join(';');
+      const res = await fetch(`https://codeforces.com/api/user.info?handles=${handles}`);
+      const data = await res.json();
+      if (data.status !== "OK") return [];
+      return data.result;
+    }
+
+    async function fetchAllUserStatuses(members) {
+      // Fetch all in parallel
+      const results = await Promise.all(members.map(async m => {
+        const res = await fetch(`https://codeforces.com/api/user.status?handle=${m.handle}`);
+        const data = await res.json();
+        return [m.handle, data.status === "OK" ? data.result : []];
+      }));
+      return Object.fromEntries(results);
+    }
+
+    async function fetchAllUserRatings(members) {
+      // Fetch all in parallel
+      const results = await Promise.all(members.map(async m => {
+        const res = await fetch(`https://codeforces.com/api/user.rating?handle=${m.handle}`);
+        const data = await res.json();
+        return [m.handle, data.status === "OK" ? data.result : []];
+      }));
+      return Object.fromEntries(results);
+    }
+
+    function getFilteredMembers() {
+      const level = document.getElementById('clubLevel').value;
+      if (!window.clubMembers) return [];
+      if (level === "all") return window.clubMembers;
+      return window.clubMembers.filter(m => m.level === level);
+    }
+
+    let lastInfos = null, lastStatuses = null, lastRatings = null;
+
+    document.getElementById('lbType').addEventListener('change', function() {
+      const type = this.value;
+      document.getElementById('dateInputs').classList.toggle('hidden', !(type === "rating-gain" || type === "solved-range"));
+    });
+
+    document.getElementById('generateBtn').onclick = async function() {
+      const type = document.getElementById('lbType').value;
+      if (type === "rating" || type === "solved") {
+        await showLeaderboard(type);
+      } else {
+        const from = document.getElementById('fromDate').value;
+        const to = document.getElementById('toDate').value;
+        if (!from || !to) return alert("Please select both dates.");
+        await showLeaderboard(type, from, to);
+      }
+    };
+
+    // Re-run leaderboard when club level changes
+    document.getElementById('clubLevel').addEventListener('change', () => {
+      const type = document.getElementById('lbType').value;
+      if (type === "rating" || type === "solved") {
+        showLeaderboard(type);
+      } else {
+        const from = document.getElementById('fromDate').value;
+        const to = document.getElementById('toDate').value;
+        if (!from || !to) return;
+        showLeaderboard(type, from, to);
+      }
+    });
+
+    // Show rating leaderboard by default
+    showLeaderboard("rating");
+  </script>
+</body>
+</html>
