@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-50 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CPC Club | About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://codeforces.org/s/0/favicon-32x32.png">
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Navbar (same as other pages) -->
+  <nav class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://codeforces.org/s/0/favicon-32x32.png" class="h-8 w-8" alt="Club Logo">
+        <span class="font-bold text-xl text-blue-700 dark:text-blue-400">CPC Club</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Home</a>
+        <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
+        <a href="trainer.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Trainers</a>
+        <a href="leaderboard.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Leaderboard</a>
+        <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
+        <a href="announcement.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Announcement</a>
+        <a href="About.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">About</a>
+      </div>
+      <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+        <svg id="moonIcon" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-2xl mx-auto px-4 py-24 flex flex-col items-center justify-center">
+    <!-- Disclaimer Section -->
+    <div class="mb-8 w-full">
+      <p class="text-center text-base md:text-lg text-red-600 dark:text-red-400 font-semibold bg-red-50 dark:bg-gray-900 rounded-lg p-4 border border-red-200 dark:border-red-700 shadow">
+        This is not any official page of IUBAT. I <span class="font-bold">Md Shojibur Rahman Fahad</span> created this website just for fun and for maintaining the Competitive programmers in my university. This page is maintained by me. If any kind of occurrence in this website has no connection with my University IUBAT.
+      </p>
+    </div>
+    <!-- Creator Section -->
+    <section class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 w-full">
+      <h2 class="text-xl md:text-2xl font-bold text-blue-700 dark:text-blue-400 mb-6">Creator Section</h2>
+      <img src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-6/480510497_1858812844862431_3904567550257530234_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeENzJptW3mGIFg7XtfhLluPEW7IssNu_5QRbsiyw27_lIaKwv6dtUHNhNn9792nvgfIFNLLgOaGDC3wXmn8bpCX&_nc_ohc=Zn9g6UX9ABEQ7kNvwHXqo8A&_nc_oc=AdmEDYXpMVsxbionFXe1USgDNH8EWGktUAAGQ4yQ6yAJmBaNM3snForWYYLxVCccMc0&_nc_zt=23&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=fOT55S59hg4dh1aYhLkT6A&oh=00_AfOaxyr59pKvCFVZojAoVHlxvbODEN3HBojXwK4j9u-XLw&oe=685E210D" alt="Your Photo" class="rounded-full h-28 w-28 mb-4 border-4 border-blue-400 shadow">
+      <div class="flex flex-col items-center gap-1 mb-4">
+        <span class="text-lg font-semibold text-blue-700 dark:text-blue-300">Md Shojibur Rahman Fahad</span>
+        <span class="text-gray-500 dark:text-gray-400 text-sm">Creator & Maintainer</span>
+      </div>
+      <div class="flex flex-col gap-2 w-full max-w-xs">
+        <div class="flex items-center gap-2">
+          <span class="font-medium text-gray-700 dark:text-gray-200 w-28">Email:</span>
+          <a href="mailto:dummyuser@email.com" class="text-blue-600 dark:text-blue-300 hover:underline break-all">srfahad@email.com</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-medium text-gray-700 dark:text-gray-200 w-28">Phone:</span>
+          <a href="tel:+12345678901" class="text-blue-600 dark:text-blue-300 hover:underline">+880 1731-746151</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="font-medium text-gray-700 dark:text-gray-200 w-28">Codeforces:</span>
+          <a href="https://codeforces.com/profile/FahadxSurma" target="_blank" class="text-blue-600 dark:text-red-300 hover:underline">FahadxSurma</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById('darkModeToggle').onclick = () => {
+      document.documentElement.classList.toggle('dark');
+    };
+  </script>
+</body>
+</html>

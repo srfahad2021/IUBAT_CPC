@@ -22,7 +22,7 @@ window.clubMembers = [
   {
     name: "Rafi Wahid Efti",
     handle: "Lauhensan",
-    level: "Level-0",
+    level: "Level-2",
   },
   // {
   //   name: "",
@@ -52,7 +52,7 @@ window.clubMembers = [
   {
     name: "SR Fahad(2nd id)",
     handle: "Unga_Bunga_Coder",
-    level: "Level-1",
+    level: "Level-0",
   }
   
 ];
