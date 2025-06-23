@@ -2,7 +2,8 @@
 <html lang="en" class="bg-gray-50 dark:bg-gray-900">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Force desktop view on all devices -->
+  <meta name="viewport" content="width=1024">
   <title>CPC Club | Trainers</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="https://codeforces.org/s/0/favicon-32x32.png">
@@ -11,25 +12,24 @@
 
   <!-- Navbar (same as other pages) -->
   <nav class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center relative">
+      <!-- Logo at the left -->
       <div class="flex items-center space-x-3">
         <img src="https://codeforces.org/s/0/favicon-32x32.png" class="h-8 w-8" alt="Club Logo">
         <span class="font-bold text-xl text-blue-700 dark:text-blue-400">CPC Club</span>
       </div>
-      <div class="hidden md:flex space-x-6">
-       <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Home</a>
-        <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
-        <a href="trainer.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">Trainers</a>
-        <a href="leaderboard.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Leaderboard</a>
-        <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
-        <a href="announcement.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Announcement</a>
-        <a href="About.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">About</a>
+      <!-- Centered Navbar Buttons -->
+      <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="flex flex-row space-x-6 items-center">
+          <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Home</a>
+          <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
+          <a href="trainer.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">Trainers</a>
+          <a href="leaderboard.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Leaderboard</a>
+          <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
+          <a href="announcement.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Announcement</a>
+          <a href="About.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">About</a>
+        </div>
       </div>
-      <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-        <svg id="moonIcon" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
-        </svg>
-      </button>
     </div>
   </nav>
 
@@ -42,12 +42,12 @@
       <!-- Advance -->
       <section>
         <h3 class="text-2xl font-bold text-red-700 dark:text-red-400 mb-6">Advance Level Trainers</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-6">
           <!-- Trainer Card -->
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
-            <img src="https://via.placeholder.com/100" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-red-400 shadow">
-            <span class="font-semibold text-lg text-red-700 dark:text-red-300">Will be updated soon</span>
-            <a href="https://codeforces.com/profile/trainer1" target="_blank" class="text-blue-600 dark:text-blue-300 hover:underline mb-1">@Will be updated soon</a>
+            <img src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-6/494205433_1045490314157372_2502291099380522850_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEVgXxaOa77rqjS0xIxRnuDcEji0WimTCFwSOLRaKZMIW9QeQmziGePJqTb4gFKMUJz9T1DABZN3PUFAAs50xOq&_nc_ohc=w0a_cfy0FOAQ7kNvwHmS24d&_nc_oc=AdnaY1Fa20vtr_EazWdwB_-7R7Zp4dkB9iyPb4W8aLhLd_x2tSSa8vThwTemcZYBu0o&_nc_zt=23&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=49SlMVkPb0Rwrb_hIUAx9A&oh=00_AfPmyuTBAP4G9Uld5UOhaGauxKHYwYDrsu95o8x3nW6xTQ&oe=685EB052" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-red-400 shadow">
+            <span class="font-semibold text-lg text-red-700 dark:text-red-300">Sachin Deb</span>
+            <a href="https://codeforces.com/profile/i_love_you_tithi" target="_blank" class="text-blue-600 dark:text-purple-300 hover:underline mb-1">@I_Love_you_Tithi</a>
             <span class="text-gray-700 dark:text-gray-200 text-sm mb-1">📧 <a href="mailto:trainer1@email.com" class="hover:underline">Willbeupdatedsoon@email.com</a></span>
             <span class="text-gray-700 dark:text-gray-200 text-sm">📞 <a href="tel:+8801000000001" class="hover:underline">Will be updated soon</a></span>
           </div>
@@ -70,18 +70,18 @@
       <!-- Level 2 -->
       <section>
         <h3 class="text-2xl font-bold text-orange-700 dark:text-orange-400 mb-6">Level 2 Trainers</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-6">
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
             <img src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-6/480510497_1858812844862431_3904567550257530234_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeENzJptW3mGIFg7XtfhLluPEW7IssNu_5QRbsiyw27_lIaKwv6dtUHNhNn9792nvgfIFNLLgOaGDC3wXmn8bpCX&_nc_ohc=Zn9g6UX9ABEQ7kNvwHXqo8A&_nc_oc=AdmEDYXpMVsxbionFXe1USgDNH8EWGktUAAGQ4yQ6yAJmBaNM3snForWYYLxVCccMc0&_nc_zt=23&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=fOT55S59hg4dh1aYhLkT6A&oh=00_AfOaxyr59pKvCFVZojAoVHlxvbODEN3HBojXwK4j9u-XLw&oe=685E210D" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-orange-400 shadow">
             <span class="font-semibold text-sm text-orange-700 dark:text-orange-300">Md Shojibur Rahman Fahad</span>
-            <a href="https://codeforces.com/profile/FahadxSurma" target="_blank" class="text-blue-600 dark:text-red-300 hover:underline mb-1">@FahadxSurma</a>
+            <a href="https://codeforces.com/profile/FahadxSurma" target="_blank" class="text-blue-600 dark:text-cyan-300 hover:underline mb-1">@FahadxSurma</a>
             <span class="text-gray-700 dark:text-gray-200 text-sm mb-1">📧 <a href="mailto:trainer4@email.com" class="hover:underline">srfahad2021@email.com</a></span>
             <span class="text-gray-700 dark:text-gray-200 text-sm">📞+880 1731-746151</a></span>
           </div>
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
             <img src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-6/481233108_1693193334933501_1365892943622678206_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGyR_WRAuOIaUKRBm1_OBgWI-Etjw_ZIPoj4S2PD9kg-kKhmzZK2-OLYtf85Ky5K4b085QCVdR05S7xfJD-Oc5Y&_nc_ohc=Ew8qHBqRsLcQ7kNvwGpE8aU&_nc_oc=AdmBDnwrXTvXjeu-r3MeSF7Urv9csxkkrg5tFWTvKnRwN62zC6CnVdfw5ymPa9n0pnQ&_nc_zt=23&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=eJr8k90YSDkbUQtMoVA7aQ&oh=00_AfNGu-1gzf1e7wFAqUG7LHLAav9pm9uQ0ZixsKenK8FYSA&oe=685E35EF" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-orange-400 shadow">
             <span class="font-semibold text-lg text-orange-700 dark:text-orange-300">Tanvir Ahmed</span>
-            <a href="https://codeforces.com/profile/tanvir_005" target="_blank" class="text-blue-600 dark:text-blue-300 hover:underline mb-1">@tanvir_005</a>
+            <a href="https://codeforces.com/profile/tanvir_005" target="_blank" class="text-blue-600 dark:text-cyan-300 hover:underline mb-1">@tanvir_005</a>
             <span class="text-gray-700 dark:text-gray-200 text-sm mb-1">📧 <a href="mailto:tanvir.24633@gmail.com" class="hover:underline">tanvir.24633@gmail.com</a></span>
             <span class="text-gray-700 dark:text-gray-200 text-sm">📞 <a href="tel:+880 1704-476935" class="hover:underline">+880 1704-476935</a></span>
           </div>
@@ -97,14 +97,15 @@
       <!-- Level 1 -->
       <section>
         <h3 class="text-2xl font-bold text-yellow-700 dark:text-yellow-400 mb-6">Level 1 Trainers</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-6">
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
             <img src="https://scontent.fzyl2-2.fna.fbcdn.net/v/t39.30808-6/494043225_2377990285904001_839815714238090492_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHy74dl8cXF0LIGvbHMhIz0pBK31cYkWJOkErfVxiRYk7hkVFA-ZxlcXkiLwXRqjUo4lctWvGQIZsCZL55SEj_B&_nc_ohc=5ftu8jJkKtQQ7kNvwHdP25Y&_nc_oc=AdlBHkAcNvpTPCDsntMpJN3xBPiW_tVyZ_zLuqWKq5ityrLZB8NogENEl5OykwQxy1M&_nc_zt=23&_nc_ht=scontent.fzyl2-2.fna&_nc_gid=pjTVZvAjc_jUKbAce7nsHw&oh=00_AfMzD_mov7kbAboX0OAXFM5y8eI5rNxTOotWcwKPTOlVxA&oe=685E2E64" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-yellow-400 shadow">
             <span class="font-semibold text-lg text-yellow-700 dark:text-yellow-300">Shahriar Chowdhury Imran</span>
-            <a href="https://codeforces.com/profile/trainer7" target="_blank" class="text-blue-600 dark:text-blue-300 hover:underline mb-1">@trainer7</a>
+            <a href="https://codeforces.com/profile/Shahriar_Imran" target="_blank" class="text-blue-600 dark:text-cyan-300 hover:underline mb-1">@Shahriar_Imran</a>
             <span class="text-gray-700 dark:text-gray-200 text-sm mb-1">📧 <a href="mailto:trainer7@email.com" class="hover:underline">trainer7@email.com</a></span>
-            <span class="text-gray-700 dark:text-gray-200 text-sm">📞 <a href="tel:+8801000000007" class="hover:underline">+8801000000007</a></span>
+            <span class="text-gray-700 dark:text-gray-200 text-sm">📞 <a href="tel:+8801571449596" class="hover:underline">+880 1571-449596</a></span>
           </div>
+          
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
             <img src="https://via.placeholder.com/100" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-red-400 shadow">
             <span class="font-semibold text-lg text-red-700 dark:text-red-300">Will be updated soon</span>
@@ -124,7 +125,7 @@
       <!-- Level 0 -->
       <section>
         <h3 class="text-2xl font-bold text-green-700 dark:text-green-400 mb-6">Level 0 Trainers</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-6">
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
             <img src="https://via.placeholder.com/100" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-red-400 shadow">
             <span class="font-semibold text-lg text-red-700 dark:text-red-300">Will be updated soon</span>
@@ -151,7 +152,7 @@
       <!-- Basic Math Sessions -->
       <section>
         <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-400 mb-6">Basic Math Sessions (For Fresher)</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-3 gap-6">
           <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center transition transform hover:scale-[1.02] hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 cursor-pointer">
             <img src="https://via.placeholder.com/100" alt="Trainer Photo" class="rounded-full h-24 w-24 mb-3 border-4 border-red-400 shadow">
             <span class="font-semibold text-lg text-red-700 dark:text-red-300">Will be updated soon</span>
@@ -177,24 +178,5 @@
       </section>
     </div>
   </main>
-
-  <script>
-    // Dark mode toggle
-    const toggleButton = document.getElementById('darkModeToggle');
-    const moonIcon = document.getElementById('moonIcon');
-
-    toggleButton.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-
-      // Update icon
-      if (document.documentElement.classList.contains('dark')) {
-        moonIcon.setAttribute('fill', 'currentColor');
-        moonIcon.setAttribute('stroke', 'none');
-      } else {
-        moonIcon.setAttribute('fill', 'none');
-        moonIcon.setAttribute('stroke', 'currentColor');
-      }
-    });
-  </script>
 </body>
 </html>

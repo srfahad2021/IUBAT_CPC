@@ -2,7 +2,8 @@
 <html lang="en" class="bg-gray-50 dark:bg-gray-900">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Force desktop view on all devices -->
+  <meta name="viewport" content="width=1024">
   <title>CPC Club | Announcements</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="https://codeforces.org/s/0/favicon-32x32.png">
@@ -12,25 +13,24 @@
 
   <!-- Navbar (same as other pages) -->
   <nav class="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center relative">
+      <!-- Logo at the left -->
       <div class="flex items-center space-x-3">
         <img src="https://codeforces.org/s/0/favicon-32x32.png" class="h-8 w-8" alt="Club Logo">
         <span class="font-bold text-xl text-blue-700 dark:text-blue-400">CPC Club</span>
       </div>
-      <div class="hidden md:flex space-x-6">
-       <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Home</a>
-        <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
-        <a href="trainer.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Trainers</a>
-        <a href="leaderboard.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Leaderboard</a>
-        <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
-        <a href="announcement.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">Announcement</a>
-        <a href="About.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">About</a>
+      <!-- Centered Navbar Buttons -->
+      <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="flex flex-row space-x-6 items-center">
+          <a href="index.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Home</a>
+          <a href="members.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Members</a>
+          <a href="trainer.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Trainers</a>
+          <a href="leaderboard.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Leaderboard</a>
+          <a href="resources.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">Resources</a>
+          <a href="announcement.html" class="text-blue-600 dark:text-blue-300 font-semibold underline">Announcement</a>
+          <a href="About.html" class="hover:text-blue-600 dark:hover:text-blue-300 font-medium">About</a>
+        </div>
       </div>
-      <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
-        <svg id="moonIcon" class="h-6 w-6 text-gray-700 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
-        </svg>
-      </button>
     </div>
   </nav>
 
@@ -39,12 +39,5 @@
     <h2 class="text-3xl font-bold mb-10 text-blue-700 dark:text-blue-300 text-center">Announcements</h2>
     <div id="announcementList" class="flex flex-col gap-6"></div>
   </main>
-
-  <script>
-    // Dark mode toggle
-    document.getElementById('darkModeToggle').onclick = () => {
-      document.documentElement.classList.toggle('dark');
-    };
-  </script>
 </body>
 </html>
